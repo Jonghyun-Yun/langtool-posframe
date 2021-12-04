@@ -1,0 +1,44 @@
+#+TITLE:  langtool-posframe
+#+DATE:    December 4, 2021
+#+SINCE:   <replace with next tagged release version>
+#+STARTUP: inlineimages nofold
+
+* Table of Contents :TOC_3:noexport:
+- [[#description][Description]]
+  - [[#maintainers][Maintainers]]
+- [[#features][Features]]
+- [[#configuration][Configuration]]
+- [[#troubleshooting][Troubleshooting]]
+
+* Description
+# A summary of what this module does.
+
++ It displays [[https://github.com/mhayashi1120/Emacs-langtool][langtool]] error messages using [[https://github.com/tumashu/posframe][posframe]].
+
+** Maintainers
++ @Jonghyun-yun (Author)
+
+* Features
+# An in-depth list of features, how to use them, and their dependencies.
+- Similar to [[https://github.com/alexmurray/flycheck-posframe][flycheck-posframe]], a user can the message position by setting =langtool-posframe-position=. The default is ='point-bottom-left-corner=.
+
+* Configuration
+# How to configure this module, including common problems and how to address them.
+#+begin_src emacs-lisp
+(use-package langtool-posframe
+  :after langtool
+  :config
+  (setq langtool-autoshow-message-function 'langtool-posframe-show-posframe)
+  (with-eval-after-load 'company
+    ;; Don't display popups if company is open
+    (add-hook 'langtool-posframe-inhibit-functions #'company--active-p))
+  (with-eval-after-load 'evil
+    ;; Don't display popups while in insert or replace mode, as it can affect
+    ;; the cursor's position or cause disruptive input delays.
+    (add-hook 'langtool-posframe-inhibit-functions #'evil-insert-state-p)
+    (add-hook 'langtool-posframe-inhibit-functions #'evil-replace-state-p))
+  )
+#+end_src
+
+* Troubleshooting
+# Common issues and their solution, or places to look for help.
