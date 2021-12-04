@@ -16,7 +16,7 @@
 
 * Features
 # An in-depth list of features, how to use them, and their dependencies.
-- Similar to [[https://github.com/alexmurray/flycheck-posframe][flycheck-posframe]], a user can the message position by setting =langtool-posframe-position=. The default is ='point-bottom-left-corner=.
+- Similar to [[https://github.com/alexmurray/flycheck-posframe][flycheck-posframe]], a user can the message position by setting ~langtool-posframe-position~. The default is ~'point-bottom-left-corner~.
 
 * Configuration
 # How to configure this module, including common problems and how to address them.
